@@ -198,7 +198,7 @@
                                            </li>
                                             <li class="active open">
                            <a href="#"><i class="fa fa-sitemap"></i> <span>Class</span></a>
-                                                <ul>
+                                                                           <ul>
                                      <li><a href="{{ URL::to('addclass') }}"><i class="fa fa-caret-right"></i> Add Class</a></li>
                                      <li><a href="{{ URL::to('viewclass') }}"><i class="fa fa-caret-right"></i> View Class Details</a></li>
                                      <li><a href="{{ URL::to('classsettings') }}"><i class="fa fa-caret-right"></i>Class Settings</a></li>
@@ -207,15 +207,18 @@
                                      <li><a href="{{ URL::to('sectionsettings') }}"><i class="fa fa-caret-right"></i>Section Settings</a></li>
           
                                                 </ul>
-                                            </li> 
+                                            </li>
                                             <li>
                                                 <a href="#"><i class="fa fa-columns"></i> <span>Subjects</span></a>
-                                                <ul>
-                  <li><a href="add-subject.html"><i class="fa fa-caret-right"></i>Add Subject</a></li>
-             <li><a href="add-chapter1.html"><i class="fa fa-caret-right"></i> Add Chapter</a></li>
-                                 <li><a href="subject-settings.html"><i class="fa fa-caret-right"></i>Settings</a></li>
+             <ul>
+                  <li><a href="addsubject"><i class="fa fa-caret-right"></i>Add Subject</a></li>
+                  <li><a href="addchapter"><i class="fa fa-caret-right"></i> Add Chapter</a></li>
+                  <li><a href="viewsubject"><i class="fa fa-caret-right"></i>View Subject</a></li>
+                  <li><a href="viewchapter"><i class="fa fa-caret-right"></i> View Chapter</a></li>
+                  <li><a href="subjectsettings"><i class="fa fa-caret-right"></i>Subject Settings</a></li>
+                  <li><a href="chaptersettings"><i class="fa fa-caret-right"></i>Chapter Settings</a></li>
              
-                                                </ul>
+             </ul>
                                             </li>
                                             <li>
                  <a href="#"><i class="fa fa-money"></i> <span>Fees</span> </a>
@@ -581,12 +584,12 @@
 
                                             @foreach ($data as $row)
                                             <tr class="odd gradeX">
-                                               @foreach($cname as $classname)
-                                        @if($row->class_id===$classname->id)
+                                            @foreach($cname as $classname)
+                                             @if($row->class_id===$classname->id)
 
-      <td>{{ $classname->class_name }}</td>
-      @endif
-      @endforeach
+                                               <td>{{ $classname->class_name }}</td>
+                                             @endif
+                                            @endforeach
                                                 <td><?php echo $row->section_name; ?></td>
                                                 <td><?php echo $row->section_teacher; ?></td>
                                                <td><?php echo $row->status; ?></td>

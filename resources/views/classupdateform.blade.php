@@ -232,12 +232,15 @@
                                             </li> 
                                             <li>
                                                 <a href="#"><i class="fa fa-columns"></i> <span>Subjects</span></a>
-                                                <ul>
-                  <li><a href="add-subject1.html"><i class="fa fa-caret-right"></i>Add Subject</a></li>
-             <li><a href="add-chapter1.html"><i class="fa fa-caret-right"></i> Add Chapter</a></li>
-                                 <li><a href="subject-settings.html"><i class="fa fa-caret-right"></i>Settings</a></li>
+                                                 <ul>
+                  <li><a href="addsubject"><i class="fa fa-caret-right"></i>Add Subject</a></li>
+                  <li><a href="addchapter"><i class="fa fa-caret-right"></i> Add Chapter</a></li>
+                  <li><a href="viewsubject"><i class="fa fa-caret-right"></i>View Subject</a></li>
+                  <li><a href="viewchapter"><i class="fa fa-caret-right"></i> View Chapter</a></li>
+                  <li><a href="subjectsettings"><i class="fa fa-caret-right"></i>Subject Settings</a></li>
+                  <li><a href="chaptersettings"><i class="fa fa-caret-right"></i>Chapter Settings</a></li>
              
-                                                </ul>
+             </ul>
                                             </li>
                                             <li>
                  <a href="#"><i class="fa fa-money"></i> <span>Fees</span> </a>
@@ -375,7 +378,15 @@
 
                             <!-- tile -->
                             <section class="tile">
-
+                                @if ($errors->any())
+                                   <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                              <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 
                                 
                                 <div class="tile-header dvd dvd-btm">
@@ -398,7 +409,7 @@
                                           <div class="form-group">
                                             <label for="selectclass" class="col-sm-2 control-label">Class Name</label>
                                             <div class="col-sm-6">
-                                                 <input type="text" name="class_name" id="selectclass" ng-model="ct" class="form-control" value="<?php echo $data->class_name?>" required>
+                                                 <input type="text" name="class_name" id="selectclass" ng-model="ct" class="form-control" value="<?php echo $data->class_name?>">
                                             </div>
                                         </div>
                                         </div>

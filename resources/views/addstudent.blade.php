@@ -225,17 +225,20 @@
                                      <li><a href="classsettings"><i class="fa fa-caret-right"></i>Class Settings</a></li>
                                      <li><a href="addsection"><i class="fa fa-caret-right"></i> Add Section</a></li>
                                      <!--<li><a href="view-sectiondetails.html"><i class="fa fa-caret-right"></i> View Section Details</a></li>-->
-                                     <li><a href="section-settings.html"><i class="fa fa-caret-right"></i>Section Settings</a></li>
+                                     <li><a href="sectionsettings"><i class="fa fa-caret-right"></i>Section Settings</a></li>
           
                                                 </ul>
                                             </li>                         <li>
                                                 <a href="#"><i class="fa fa-columns"></i> <span>Subjects</span></a>
                                                 <ul>
-                  <li><a href="add-subject1.html"><i class="fa fa-caret-right"></i>Add Subject</a></li>
-             <li><a href="add-chapter1.html"><i class="fa fa-caret-right"></i> Add Chapter</a></li>
-                                 <li><a href="subject-settings.html"><i class="fa fa-caret-right"></i>Settings</a></li>
+                  <li><a href="addsubject"><i class="fa fa-caret-right"></i>Add Subject</a></li>
+                  <li><a href="addchapter"><i class="fa fa-caret-right"></i> Add Chapter</a></li>
+                  <li><a href="viewsubject"><i class="fa fa-caret-right"></i>View Subject</a></li>
+                  <li><a href="viewchapter"><i class="fa fa-caret-right"></i> View Chapter</a></li>
+                  <li><a href="subjectsettings"><i class="fa fa-caret-right"></i>Subject Settings</a></li>
+                  <li><a href="chaptersettings"><i class="fa fa-caret-right"></i>Chapter Settings</a></li>
              
-                                                </ul>
+             </ul>
                                             </li>
                                             <li>
                  <a href="#"><i class="fa fa-money"></i> <span>Fees</span> </a>
@@ -549,9 +552,9 @@
                                                
                                         </div>
                                          <div class="form-group col-md-4">
-                                                <label for="hobbies">Hobbies: </label>
+                                                <label for="hobbies">Roll No: </label>
                                                
-                                                <input type="text" name="hobbies" id="hobbies" ng-model="hobbies" class="form-control mb-10" required>
+                                                <input type="text" name="roll_no" id="roll_no" ng-model="roll_no" class="form-control mb-10" required>
                                              <div class="ermsg">
                                                 <span style="color: red" ng-show="form.hobbies.$touched && form.hobbies.$invalid">
                                                     <span ng-show="form.hobbies.$error.required">Required field</span>
@@ -627,6 +630,17 @@
                                                     <span ng-show="!form.email.$error.required && form.email.$invalid">Enter valid email</span>
                                                 </span></div>
                                             </div>
+
+                                            <div class="form-group col-md-4">
+                                                <label for="dob">Hobbies: </label>
+                                            <div class='input-group' id=''>
+                                                <textarea class="form-control" name="hobbies" id="hobbies"></textarea>
+                                                <span class="input-group-addon">
+                                                    <span class="fa fa-calendar"></span>
+                                                </span>
+                                            </div>
+                                               
+                                        </div>
                                             
                                             <div style="clear:both">
                                             </div>

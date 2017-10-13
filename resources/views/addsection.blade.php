@@ -209,12 +209,15 @@
                                             </li> 
                                             <li>
                                                 <a href="#"><i class="fa fa-columns"></i> <span>Subjects</span></a>
-                                                <ul>
-                  <li><a href="add-subject1.html"><i class="fa fa-caret-right"></i>Add Subject</a></li>
-             <li><a href="add-chapter1.html"><i class="fa fa-caret-right"></i> Add Chapter</a></li>
-                                 <li><a href="subject-settings.html"><i class="fa fa-caret-right"></i>Settings</a></li>
+                                                 <ul>
+                  <li><a href="addsubject"><i class="fa fa-caret-right"></i>Add Subject</a></li>
+                  <li><a href="addchapter"><i class="fa fa-caret-right"></i> Add Chapter</a></li>
+                  <li><a href="viewsubject"><i class="fa fa-caret-right"></i>View Subject</a></li>
+                  <li><a href="viewchapter"><i class="fa fa-caret-right"></i> View Chapter</a></li>
+                  <li><a href="subjectsettings"><i class="fa fa-caret-right"></i>Subject Settings</a></li>
+                  <li><a href="chaptersettings"><i class="fa fa-caret-right"></i>Chapter Settings</a></li>
              
-                                                </ul>
+             </ul>
                                             </li>
                                             <li>
                  <a href="#"><i class="fa fa-money"></i> <span>Fees</span> </a>
@@ -353,7 +356,15 @@
                             <!-- tile -->
                             <section class="tile">
 
-                                   
+                                   @if ($errors->any())
+                                   <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                              <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 
                                 <div class="tile-header dvd dvd-btm">
                                     <h1 class="custom-font"><strong>Add Section</strong></h1>
@@ -379,15 +390,16 @@
                                             <label for="input01" class="col-sm-2 control-label">Select Class </label>
                                             <div class="col-sm-6">
                                                 <select class="form-control" name="class_name" id="cname">
+                                                <option value="">----Select Class----</option>
 
-    @foreach ($cname as $classname)          
-    {
-        <option value="{{$classname->id}}">{{$classname->class_name}}</option>
-        
-    }
-    @endforeach
+                                                      @foreach ($cname as $classname)          
+                                                      {
+                                                         <option value="{{$classname->id}}">{{$classname->class_name}}</option>
+          
+                                                      }
+                                                      @endforeach
 
-</select>
+                                              </select>
                                             </div>
                                         </div>
                                         </div>
@@ -395,7 +407,7 @@
                                         <div class="form-group">
                                             <label for="input01" class="col-sm-2 control-label">Section Name</label>
                                             <div class="col-sm-6">
-                                                <input type="text" name="section_name" id="sectionname" class="form-control" required>
+                                                <input type="text" name="section_name" id="sectionname" class="form-control">
                                             </div>
                   
                                         </div>
@@ -404,7 +416,7 @@
                                         <div class="form-group">
                                             <label for="input01" class="col-sm-2 control-label">Section Teacher</label>
                                             <div class="col-sm-6">
-                                                <input type="text" name="section_teacher" id="sectionteacher" class="form-control" required>
+                                                <input type="text" name="section_teacher" id="sectionteacher" class="form-control">
                                             </div>
                   
                                         </div>
@@ -417,8 +429,8 @@
                                                
                                                  <select name="status" class="form-control mb-10"
                                                         data-parsley-trigger="change"
-                                                        required>
-                                                    <option value="">Select option...</option>
+                                                        >
+                                                    
                                                     <option value="Active">Active</option>
                                                     <option value="Inactive">Inactive</option>
                                                     

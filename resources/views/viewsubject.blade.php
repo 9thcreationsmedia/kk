@@ -8,7 +8,7 @@
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>View Section Details </title>
+        <title>View Subject Details </title>
         <link rel="icon" type="image/ico" href="ncm/images/fav.png" />
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,7 +70,7 @@
 
                    <!-- Branding -->
                     <div class="branding">
-                        <a class="brand" href="index.html">
+                       <a class="brand" href="{{ URL ('/') }}">
                             <img src="ncm/images/lg2.png">
                         </a>
                         <a href="#" class="offcanvas-toggle visible-xs-inline"><i class="fa fa-bars"></i></a>
@@ -137,7 +137,7 @@
                                 <div class="panel-heading" role="tab">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" href="#sidebarNav">
-                                            Navigation <i class="fa fa-angle-up"></i>
+                                            
                                         </a>
                                     </h4>
                                 </div>
@@ -207,7 +207,7 @@
 
                                                 </ul>
                                            </li>
-                                            <li class="active open">
+                                            <li>
                            <a href="#"><i class="fa fa-sitemap"></i> <span>Class</span></a>
                                                 <ul>
                                      <li><a href="{{ URL::to('addclass') }}"><i class="fa fa-caret-right"></i> Add Class</a></li>
@@ -218,7 +218,7 @@
                                      <li><a href="{{ URL::to('sectionsettings') }}"><i class="fa fa-caret-right"></i>Section Settings</a></li>      
                                                 </ul>
                                             </li> 
-                                            <li>
+                                            <li  class="active open">
                                                 <a href="#"><i class="fa fa-columns"></i> <span>Subjects</span></a>
                                                  <ul>
                   <li><a href="addsubject"><i class="fa fa-caret-right"></i>Add Subject</a></li>
@@ -381,11 +381,6 @@
                            
                             <!-- tile -->
                             <section class="tile">
-                                   @if ($message = Session::get('add'))
-                                          <div class="alert alert-success">
-                                              <p>{{ $message }}</p>
-                                          </div>
-                                      @endif
 
                                 <!-- tile header -->
                       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -471,7 +466,7 @@
                                 
                                 
                                 <div class="tile-header dvd dvd-btm">
-                                    <h1 class="custom-font"><strong> View Section Details </strong></h1>
+                                    <h1 class="custom-font"><strong> View subject Details </strong></h1>
 									
                                 </div>
                                 <!-- /tile header -->
@@ -519,6 +514,12 @@
                                         <div style="clear:both;"></div>
                                        
                                         </div>
+
+                                        @if ($message = Session::get('add'))
+                                          <div class="alert alert-success">
+                                              <p>{{ $message }}</p>
+                                          </div>
+                                      @endif
                                       
                                     </form>
                                 <!--form end-->
@@ -530,30 +531,39 @@
                                         <table class="table table-custom" id="editable-usage">
                                             <thead>
                                             <tr>
-                                              <th>Class Name</th>
+                                              <th>Subject Name</th>
+                                                <th>Class Name</th>
                                                 <th>Section Name</th>
-                                                <th>Section Teacher</th>
-                                                <th>Section Status</th>
-                                                <th>Section Created Date</th>
-                                               
-                                                
-                                                
+                                                <th>Subject Teacher</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             
-                                            @foreach ($data as $row)
+                                            @foreach ($sname as $row)
                                             <tr class="odd gradeX">
-                                               @foreach($cname as $classname)
-                                        @if($row->class_id===$classname->id)
+                                          
+                                                <td><?php echo $row->subject_name; ?></td>
+                                                @foreach($cname as $classname)
+                                               @if($row->class_id===$classname->id)
 
-      <td>{{ $classname->class_name }}</td>
-      @endif
-      @endforeach
-                                                <td><?php echo $row->section_name; ?></td>
-                                                <td><?php echo $row->section_teacher; ?></td>
-                                               <td><?php echo $row->status; ?></td>
-                                                <td><?php echo $row->created_at; ?></td>
+                                                   <td>{{ $classname->class_name }}</td>
+                                                       @endif
+                                               @endforeach
+
+
+                                               @foreach($secname as $sectionname)
+                                               @if($row->section_id===$sectionname->id)
+
+                                                   <td>{{ $sectionname->section_name }}</td>
+                                                       @endif
+                                               @endforeach
+
+
+
+
+
+
+                                              <td><?php echo $row->subject_teacher; ?></td>
                                                
                                                 <!--<td class="actions"><a href="add-employee.html">EDIT</a></td>-->
                                                 

@@ -1,6 +1,6 @@
 <!doctype html>
 
- <html class="no-js" lang=""> 
+<html class="no-js" lang="" ng-app="myApp" ng-cloak>
 
 
 
@@ -8,7 +8,7 @@
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>View Section Details </title>
+        <title>Add Chapter</title>
         <link rel="icon" type="image/ico" href="ncm/images/fav.png" />
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,11 +30,16 @@
         <link rel="stylesheet" href="ncm/css/dataTables.responsive.css">
         <link rel="stylesheet" href="ncm/css/dataTables.colVis.min.css">
         <link rel="stylesheet" href="ncm/css/dataTables.tableTools.min.css">
-
+        <link rel="stylesheet" href="ncm/css/bootstrap-datetimepicker.min.css">
+    
         <!-- project main css files -->
         <link rel="stylesheet" href="ncm/css/main.css">
         <!--/ stylesheets -->
+        <!--datepicker starts-->
+       <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <link href="ncm/css/datepicker.css" rel="stylesheet" type="text/css">
 
+       <!--datepicker ends -->
 
 
         <!-- ==========================================
@@ -42,10 +47,12 @@
         =========================================== -->
         <script src="ncm/js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <!--/ modernizr -->
-        
+
+
 
 
     </head>
+
 
 
 
@@ -57,20 +64,15 @@
         ===================================================== -->
         <div id="wrap" class="animsition">
 
-
-
-
-
-
             <!-- ===============================================
             ================= HEADER Content ===================
             ================================================ -->
             <section id="header">
                 <header class="clearfix">
 
-                   <!-- Branding -->
+                    <!-- Branding -->
                     <div class="branding">
-                        <a class="brand" href="index.html">
+                       <a class="brand" href="{{ URL ('/') }}">
                             <img src="ncm/images/lg2.png">
                         </a>
                         <a href="#" class="offcanvas-toggle visible-xs-inline"><i class="fa fa-bars"></i></a>
@@ -137,7 +139,7 @@
                                 <div class="panel-heading" role="tab">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" href="#sidebarNav">
-                                            Navigation <i class="fa fa-angle-up"></i>
+                                           
                                         </a>
                                     </h4>
                                 </div>
@@ -207,18 +209,19 @@
 
                                                 </ul>
                                            </li>
-                                            <li class="active open">
+                                            <li>
                            <a href="#"><i class="fa fa-sitemap"></i> <span>Class</span></a>
                                                 <ul>
-                                     <li><a href="{{ URL::to('addclass') }}"><i class="fa fa-caret-right"></i> Add Class</a></li>
-                                     <li><a href="{{ URL::to('viewclass') }}"><i class="fa fa-caret-right"></i> View Class Details</a></li>
-                                     <li><a href="{{ URL::to('classsettings') }}"><i class="fa fa-caret-right"></i>Class Settings</a></li>
+                                     <li><a href="addclass"><i class="fa fa-caret-right"></i> Add Class</a></li>
+                                     <li><a href="viewclass"><i class="fa fa-caret-right"></i> View Class Details</a></li>
+                                     <li><a href="classsettings"><i class="fa fa-caret-right"></i>Class Settings</a></li>
                                      <li><a href="{{ URL::to('addsection') }}"><i class="fa fa-caret-right"></i> Add Section</a></li>
                                     <li><a href="{{ URL::to('viewsection') }}"><i class="fa fa-caret-right"></i> View Section Details</a></li>
-                                     <li><a href="{{ URL::to('sectionsettings') }}"><i class="fa fa-caret-right"></i>Section Settings</a></li>      
+                                     <li><a href="{{ URL::to('sectionsettings') }}"><i class="fa fa-caret-right"></i>Section Settings</a></li>
+          
                                                 </ul>
                                             </li> 
-                                            <li>
+                                            <li  class="active open">
                                                 <a href="#"><i class="fa fa-columns"></i> <span>Subjects</span></a>
                                                  <ul>
                   <li><a href="addsubject"><i class="fa fa-caret-right"></i>Add Subject</a></li>
@@ -233,13 +236,14 @@
                                             <li>
                  <a href="#"><i class="fa fa-money"></i> <span>Fees</span> </a>
                                                 <ul>
-             <li><a href="add-acadamic-fee.html"><i class="fa fa-caret-right"></i>Add Academic Fee</a></li>
+              <li><a href="add-acadamic-fee.html"><i class="fa fa-caret-right"></i>Add Academic Fee</a></li>
              <li><a href="add-transport-fee.html"><i class="fa fa-caret-right"></i>Add Transport Fee</a></li>
              <li><a href="books-fee.html"><i class="fa fa-caret-right"></i>Add Book Fee</a></li>
 			  <li><a href="view-acadamic-fee.html"><i class="fa fa-caret-right"></i> View Academic Fee</a></li>
              <li><a href="view-transport-fee.html"><i class="fa fa-caret-right"></i> View Transport Fee</a></li>
              <li><a href="view-book-fee.html"><i class="fa fa-caret-right"></i>View Book Fee</a></li>
              <li><a href="fee-settings"><i class="fa fa-caret-right"></i>Settings</a></li>
+
 
                                                 </ul>
                                             </li>
@@ -254,9 +258,8 @@
 
                                                 </ul>
                                             </li>
-                 <li>
-				<a href="#"><i class="fa fa-table"></i> <span>Timetable</span></a>
-              <ul>
+                <li><a href="#"><i class="fa fa-table"></i> <span>Timetable</span></a>
+                <ul>
 				<li><a href="#"><i class="fa fa-caret-right"></i>Exam Timetable</a></li>
 				<ul>
 				<li><a href="add-timetable.html"><i class="fa fa-caret-right"></i>Add Timetable</a></li>
@@ -275,7 +278,7 @@
                          <ul>
                      <li><a href="add-exam.html"><i class="fa fa-caret-right"></i>Add Exam</a></li>
                     <li><a href="add-marks.html"><i class="fa fa-caret-right"></i>Add Marks</a></li>
-                    <li><a href="reportcard.html"><i class="fa fa-caret-right"></i>Report Card</a></li>
+                    <li><a href="report-card.html"><i class="fa fa-caret-right"></i>Report Card</a></li>
 
                               </ul>
                             </li>
@@ -290,10 +293,10 @@
                          <li>
                           <a href="#"><i class="fa fa-home"></i> <span>Hostel</span></a>              
                         <ul>                     
-                       <li><a href="add-building.html"><i class="fa fa-caret-right"></i>Add Building</a></li>
-                        <li><a href="add-room.html"><i class="fa fa-caret-right"></i>Add Room</a></li>                
+                        <li><a href="add-building.html"><i class="fa fa-caret-right"></i>Add Building</a></li>
+                        <li><a href="add-room.html"><i class="fa fa-caret-right"></i>Add Room</a></li>                 
 						<li><a href="room-availability.html"><i class="fa fa-caret-right"></i>Room Availability</a></li>
-                        <li><a href="room-allocation.html"><i class="fa fa-caret-right"></i>Room Allocation</a></li>            
+                        <li><a href="room-allocation.html"><i class="fa fa-caret-right"></i>Room Allocation</a></li>             
 						<li><a href="view-hostel-students.html"><i class="fa fa-caret-right"></i>View Hostel Students</a></li>
                         <li><a href="hostel-settings.html"><i class="fa fa-caret-right"></i>Settings</a></li>
 
@@ -344,20 +347,6 @@
 
                 </aside>                <!--/ SIDEBAR Content -->
 
-
-
-
-
-
-                <!-- =================================================
-                ================= RIGHTBAR Content ===================
-                ================================================== -->
-             
-                <!--/ RIGHTBAR Content -->
-
-
-
-
             </div>
             <!--/ CONTROLS Content -->
 
@@ -371,205 +360,197 @@
 
                 <div class="page page-tables-datatables">
 
-                    
+                  
                     <!-- row -->
                     <div class="row">
                         <!-- col -->
                         <div class="col-md-12">
 
 
-                           
                             <!-- tile -->
                             <section class="tile">
-                                   @if ($message = Session::get('add'))
-                                          <div class="alert alert-success">
-                                              <p>{{ $message }}</p>
-                                          </div>
-                                      @endif
 
-                                <!-- tile header -->
-                      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title custom-font">Add Class</h3>
-                    </div>
-                    <div class="modal-body">
-                       <div class="tile-body">
-
-                               <form name="form2" role="form" id="form2" data-parsley-validate>
-                                      <div class="row">
-                                         <div class="form-group">
-                                            <label for="input01" class="col-sm-2 control-label">User Type</label>
-                                            <div class="col-sm-8">
-                                                  <input type="text" name="fname" id="fname" class="form-control" required>
-                                            </div>
-                  
-                                        </div>
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                          <div class="form-group">
-                                            <label for="input01" class="col-sm-2 control-label">Status</label>
-                                            <div class="col-sm-8">
-                                                 <select name="f2" class="form-control mb-10"
-                                                        data-parsley-trigger="change"
-                                                        required>
-                                                    <option value="">Select option...</option>
-                                                    <option value="foo">Active</option>
-                                                    <option value="bar">In Active</option>
-                                                
-                                                </select>
-                                            </div>
-                  
-                                        </div>
-                                        </div>
-                                        </div>
-                    </div>
-                    <div class="modal-footer">
-                    <button class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c"><i class="fa fa-arrow-left"></i>Add</button>
-                        <button class="btn btn-success btn-ef btn-ef-3 btn-ef-3c"  data-dismiss="modal"><i class="fa fa-arrow-right"></i>Cancel</button>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-		</form>
-	   		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title custom-font">Add Class</h3>
-                    </div>
-                    <div class="modal-body">
-                       <div class="tile-body">
-
-                            <form name="form2" role="form" id="form2" data-parsley-validate>
-                                      <div class="row">
-                                         <div class="form-group">
-                                            <label for="input01" class="col-sm-2 control-label">Student-Id</label>
-                                            <div class="col-sm-8">
-                                                  <input type="text" name="fname" id="fname" class="form-control" required>
-                                            </div>
-                  
-                                        </div>
-                                        </div>
-                                        <br>
-                                       
-                                        </div>
-                    </div>
-                    <div class="modal-footer">
-                    <button class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c"><i class="fa fa-arrow-left"></i>Update</button>
-                        <button class="btn btn-success btn-ef btn-ef-3 btn-ef-3c"  data-dismiss="modal"><i class="fa fa-arrow-right"></i>Cancel</button>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-		</form>
-
-                                
+                                 @if ($errors->any())
+                                   <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                              <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 
                                 <div class="tile-header dvd dvd-btm">
-                                    <h1 class="custom-font"><strong> View Section Details </strong></h1>
-									
+                                    <h1 class="custom-font"><strong>Add Chapter</strong></h1>
+								
                                 </div>
                                 <!-- /tile header -->
                                                       
 
 
 
-                                <!--form-->
-                <form name="form2" role="form" id="form2" data-parsley-validate>
+                                <!-- tile body -->
+                                
+                                <!--fiel starts-->
+                       <div class="tile-body">
+                           <div class="row">
+                                 <form name="form" action="chapteraddform" method="post" role="form" id="form">
 
-               <div class="row" style="padding:10px;">
-              
-         <div class="form-group">
-            <!--multiple dropdown functionality-->
+                                        
+                                        <!-- <div class="form-group">
+                                            <label for="secas" class="col-sm-2 control-label">Subject Name</label>
+                                            <div class="col-sm-6">
+                                               
+                                                 <select name="subject_name" id="secas" ng-model="secas" class="form-control mb-10" required>
+                                                    <option value="">Select option...</option>
+                                                    <option value="First">First</option>
+                                                    <option value="Second">Second</option>
+                                                    <option value="Third">Third</option>
 
-<!--   
-   <div class="ccms_form_element cfdiv_custom" id="style_container_div">
-<label for="input01" class="col-sm-1 control-label">Search By</label>
-<div class="col-sm-3">
-     
-    <select size="1" id="beerStyle" class=" validate['required'] form-control mb-6" title="" type="select" name="style">
-<option value="">-Select-</option>
-<option value="Ale">Class</option>
-<!--<option value="Lager">Section</option>-->
-<!--<option value="Hybrid">name</option>-->
-<!--
-</select><div class="clear"></div><div id="error-message-style"></div></div>
-<div id="Ale"  class="style-sub-1"  style="display: none;" name="stylesub1" onchange="ChangeDropdowns(this.value)">
-  <label for="input01" class="col-sm-1 control-label">Select</label>
-  <div class="col-sm-3">
-    <select id="Ale2" class="form-control mb-6">
-      <option value="">-Select-</option> 
-      <option value="First">1st Class</option>
-      <option value="Second">2nd Class</option>
-       <option value="Third">3rd Class</option>
-    </select>
-    </div>
+                                                </select>
+                                           
+                                            </div>
+                  
+                                        </div> -->
+                                      
+                                        
+                                      <div class="form-group">
+                                            <label for="input01" class="col-sm-2 control-label">Subject Name </label>
+                                            <div class="col-sm-6">
+                                                <select class="form-control" name="subject_name" id="sname">
+                                                <option value="">-----Select Subject-----</option>
+                                                 @foreach ($sname as $subjectname)          
+                                                 {
+                                                   <option value="{{$subjectname->id}}">{{$subjectname->subject_name}}</option>
+        
+                                                 }
+                                                 @endforeach
+
+                                              </select>
+                                     </div>
+                                   </div>
+                                 </div>
+                                  <div class="row">   
+                                      <div class="form-group">
+                                            <label for="input01" class="col-sm-2 control-label">Class </label>
+                                            <div class="col-sm-6">
+                                                <select class="form-control" name="section_name" id="secname">
+                                                <option value="">-----Select Class-----</option>
+
+                                                   @foreach ($cname as $classname)          
+                                                  {
+                                                      <option value="{{$classname->id}}">{{$classname->class_name}}</option>
+        
+                                                  }
+                                                 @endforeach
+
+                                              </select>
+                                            </div>
+                                        </div>
+                                        </div>
+
+
+
+
+
+                                         <div class="row">   
+                                      <div class="form-group">
+                                            <label for="input01" class="col-sm-2 control-label">Section </label>
+                                            <div class="col-sm-6">
+                                                <select class="form-control" name="class_name" id="cname">
+                                                <option value="">-----Select Section-----</option>
+
+                                                   @foreach ($secname as $sectionname)          
+                                                  {
+                                                      <option value="{{$sectionname->id}}">{{$sectionname->section_name}}</option>
+        
+                                                  }
+                                                 @endforeach
+
+                                              </select>
+                                            </div>
+                                        </div>
+                                        </div>
+
+
+
+
+
+
+                                        <div class="row">
+                                          <div class="form-group">
+                                            <label for="selectclass" class="col-sm-2 control-label">Chapter Name</label>
+                                            <div class="col-sm-6">
+                                                 <input type="text" name="chapter_name" id="selectclass" ng-model="ct" class="form-control">
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="form-group">
+                                            <label for="selectclass" class="col-sm-2 control-label">Chapter Number</label>
+                                            <div class="col-sm-6">
+                                                 <input type="text" name="chapter_number" id="selectclass" ng-model="ct" class="form-control">
+                                            </div>
+                                        </div>
+                                        </div>
+                                       
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label for="sdt" class="col-sm-2 control-label">Chapter Start Date</label>
+                                            <div class="input-group  col-sm-6" >
+                                                <input type="text" class="form-control" name="chapter_start_date" id="sdt" />
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                            </div>
+                  
+                                        </div>
+                                        </div> 
+                                     <div class="row">
+                                        <div class="form-group">
+                                            <label for="edt" class="col-sm-2 control-label">Chapter End Date</label>
+                                            <div class="input-group col-sm-6">
+                                                <input type="text" class="form-control" name="chapter_end_date" id="edt"/>
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                            </div>
+                  
+                                        </div>
+                                        </div> 
+                                       
+                                   <!--          <div class="row">
+                                        <div class="form-group">
+                                            <label for="secas" class="col-sm-2 control-label">Status</label>
+                                            <div class="col-sm-6">
+                                               
+                                                 <select name="status" id="secas" ng-model="secas" class="form-control mb-10" required>
+                                                    <option value="" disabled>Select option...</option>
+                                                    <option value="Active">Active</option>
+                                                    <option value="Inactive">Inactive</option>
+                                                
+                                                </select>
+                                           
+                                            </div>
+                  
+                                        </div>
+                                        </div> -->
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                       
+                                         
+                                        
+                                        
+                                        <div class="form-group">
+ <button type="submit" class="btn btn-blue btn-rounded mb-10">Add</button>&nbsp;&nbsp;&nbsp;<button type="reset" class="btn btn-blue btn-rounded mb-10">Cancel</button>
+ </div>
+   </form>
 </div>
 
-<div class="clear"></div><div id="error-message-style-sub-1"></div></div>
- -->    
-<!--multiple dropdown close-->
-     
-                                      
-                                        <div style="clear:both;"></div>
-                                       
-                                        </div>
-                                      
-                                    </form>
-                                <!--form end-->
-                                <!--field ends-->
-                                
-                                 <div style="clear:both;"></div>
-                                <div class="tile-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-custom" id="editable-usage">
-                                            <thead>
-                                            <tr>
-                                              <th>Class Name</th>
-                                                <th>Section Name</th>
-                                                <th>Section Teacher</th>
-                                                <th>Section Status</th>
-                                                <th>Section Created Date</th>
-                                               
-                                                
-                                                
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            
-                                            @foreach ($data as $row)
-                                            <tr class="odd gradeX">
-                                               @foreach($cname as $classname)
-                                        @if($row->class_id===$classname->id)
-
-      <td>{{ $classname->class_name }}</td>
-      @endif
-      @endforeach
-                                                <td><?php echo $row->section_name; ?></td>
-                                                <td><?php echo $row->section_teacher; ?></td>
-                                               <td><?php echo $row->status; ?></td>
-                                                <td><?php echo $row->created_at; ?></td>
-                                               
-                                                <!--<td class="actions"><a href="add-employee.html">EDIT</a></td>-->
-                                                
-                                            </tr>
-                                            @endforeach
-                                     
-                                          
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <!-- /tile body -->
+                              
                             </section>
                             <!-- /tile -->
-
-                         
+                          
+                          
                         </div>
                         <!-- /col -->
                     </div>
@@ -579,33 +560,14 @@
                 
             </section>
             <!--/ CONTENT -->
-
-
-
-
-
-
         </div>
         <!--/ Application Content -->
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         <!-- ============================================
         ============== Vendor JavaScripts ===============
         ============================================= -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <!--<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery/jquery-1.11.2.min.js"><\/script>')</script>-->
+       <!-- <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery/jquery-1.11.2.min.js"><\/script>')</script>-->
 
         <script src="ncm/js/bootstrap.min.js"></script>
 
@@ -630,44 +592,70 @@
 
 
 
+        <script src="ncm/js/moment.min.js"></script>
+
+        <script src="ncm/js/bootstrap-datetimepicker.min.js"></script>
 
         <!-- ============================================
         ============== Custom JavaScripts ===============
         ============================================= -->
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="ncm/js/main.js"></script>
         <!--/ custom javascripts -->
+<!--date piceker file starts-->
 
-	    <script>
-		 
-		    $("#beerStyle").change ( function () {
-            var targID  = $(this).val ();
-            $("div.style-sub-1").hide ();
-            $('#' + targID).show ();
-            } )
-		
-
-		</script>
-        <script> 
-    $("#Ale2").change ( function () {
-    var targID  = $(this).val ();
-    $("div.style-sub-2").hide ();
-    $('#' + targID).show ();
-} )
-    </script>
-    
-	 
+<!--datepicker file ends-->
 
 
 
-       
-    </body>
+
+
+      
+
+<script>
+    angular.module('myApp',[]);
+</script>
+            <script>
+                document.querySelector("#ct").addEventListener("keyup",function(){
+        this.value=this.value.replace(/[^a-zA-Z]/g,"");
+});
+            </script>
+
+
+<script>
+   
+ $("#sdt").datepicker({
+
+     numberOfMonths: 1,
+     changeMonth:true,
+              changeYear:true,
+     
+
+     onSelect: function(selected) {
+
+       $("#edt").datepicker("option","minDate", selected)
+
+     }
+
+ });
+
+ $("#edt").datepicker({
+
+     numberOfMonths: 1,
+     changeMonth:true,
+              changeYear:true,
+   
+
+     onSelect: function(selected) {
+
+        $("#sdt").datepicker("option","maxDate", selected)
+
+     }
+
+ }); 
+
+</script> 
+
+   </body>
 </html>
-
-
-
-
-
-
-
-
 

@@ -1,14 +1,12 @@
 <!doctype html>
 
- <html class="no-js" lang=""> 
-
-
+<html class="no-js" lang=""> 
 
     <head>
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>View Section Details </title>
+        <title>Chapter Settings</title>
         <link rel="icon" type="image/ico" href="ncm/images/fav.png" />
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,9 +45,6 @@
 
     </head>
 
-
-
-
     <body id="" class="appWrapper">
 
         <!-- ====================================================
@@ -57,20 +52,14 @@
         ===================================================== -->
         <div id="wrap" class="animsition">
 
-
-
-
-
-
             <!-- ===============================================
             ================= HEADER Content ===================
             ================================================ -->
             <section id="header">
                 <header class="clearfix">
-
-                   <!-- Branding -->
+ <!-- Branding -->
                     <div class="branding">
-                        <a class="brand" href="index.html">
+                       <a class="brand" href="{{ URL ('/') }}">
                             <img src="ncm/images/lg2.png">
                         </a>
                         <a href="#" class="offcanvas-toggle visible-xs-inline"><i class="fa fa-bars"></i></a>
@@ -137,7 +126,7 @@
                                 <div class="panel-heading" role="tab">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" href="#sidebarNav">
-                                            Navigation <i class="fa fa-angle-up"></i>
+                                            
                                         </a>
                                     </h4>
                                 </div>
@@ -207,20 +196,21 @@
 
                                                 </ul>
                                            </li>
-                                            <li class="active open">
+                                            <li>
                            <a href="#"><i class="fa fa-sitemap"></i> <span>Class</span></a>
-                                                <ul>
+                                                                           <ul>
                                      <li><a href="{{ URL::to('addclass') }}"><i class="fa fa-caret-right"></i> Add Class</a></li>
                                      <li><a href="{{ URL::to('viewclass') }}"><i class="fa fa-caret-right"></i> View Class Details</a></li>
                                      <li><a href="{{ URL::to('classsettings') }}"><i class="fa fa-caret-right"></i>Class Settings</a></li>
                                      <li><a href="{{ URL::to('addsection') }}"><i class="fa fa-caret-right"></i> Add Section</a></li>
                                     <li><a href="{{ URL::to('viewsection') }}"><i class="fa fa-caret-right"></i> View Section Details</a></li>
-                                     <li><a href="{{ URL::to('sectionsettings') }}"><i class="fa fa-caret-right"></i>Section Settings</a></li>      
+                                     <li><a href="{{ URL::to('sectionsettings') }}"><i class="fa fa-caret-right"></i>Section Settings</a></li>
+          
                                                 </ul>
-                                            </li> 
-                                            <li>
+                                            </li>
+                                            <li  class="active open">
                                                 <a href="#"><i class="fa fa-columns"></i> <span>Subjects</span></a>
-                                                 <ul>
+             <ul>
                   <li><a href="addsubject"><i class="fa fa-caret-right"></i>Add Subject</a></li>
                   <li><a href="addchapter"><i class="fa fa-caret-right"></i> Add Chapter</a></li>
                   <li><a href="viewsubject"><i class="fa fa-caret-right"></i>View Subject</a></li>
@@ -345,21 +335,7 @@
                 </aside>                <!--/ SIDEBAR Content -->
 
 
-
-
-
-
-                <!-- =================================================
-                ================= RIGHTBAR Content ===================
-                ================================================== -->
-             
-                <!--/ RIGHTBAR Content -->
-
-
-
-
             </div>
-            <!--/ CONTROLS Content -->
 
 
 
@@ -371,21 +347,15 @@
 
                 <div class="page page-tables-datatables">
 
-                    
+                   
                     <!-- row -->
                     <div class="row">
                         <!-- col -->
                         <div class="col-md-12">
 
 
-                           
                             <!-- tile -->
                             <section class="tile">
-                                   @if ($message = Session::get('add'))
-                                          <div class="alert alert-success">
-                                              <p>{{ $message }}</p>
-                                          </div>
-                                      @endif
 
                                 <!-- tile header -->
                       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -439,7 +409,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title custom-font">Add Class</h3>
+                        <h3 class="modal-title custom-font">Edit Class</h3>
                     </div>
                     <div class="modal-body">
                        <div class="tile-body">
@@ -447,15 +417,55 @@
                             <form name="form2" role="form" id="form2" data-parsley-validate>
                                       <div class="row">
                                          <div class="form-group">
-                                            <label for="input01" class="col-sm-2 control-label">Student-Id</label>
+                                            <label for="input01" class="col-sm-2 control-label">Class</label>
                                             <div class="col-sm-8">
-                                                  <input type="text" name="fname" id="fname" class="form-control" required>
+                                                 <select name="f2" class="form-control mb-10"
+                                                        data-parsley-trigger="change"
+                                                        required>
+                                                    <option value="">Select option...</option>
+                                                    <option value="foo">1st Class</option>
+                                                    <option value="bar">2nd Class</option>
+                                                
+                                                </select>
                                             </div>
                   
                                         </div>
                                         </div>
                                         <br>
-                                       
+                                        
+                                     
+                                        <div class="row">
+                                          <div class="form-group">
+                                            <label for="input01" class="col-sm-2 control-label">Teacher Name</label>
+                                            <div class="col-sm-8">
+                                                 <input type="text" name="fname" id="fname" class="form-control" required>
+                                            </div>
+                  
+                                        </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="form-group">
+                                            <label for="input01" class="col-sm-2 control-label">How Many Sections In Class</label>
+                                            <div class="col-sm-8">
+                                                 <input type="text" name="fname" id="fname" class="form-control" required>
+                                            </div>
+                  
+                                        </div>
+                                        </div>
+                                        <div class="row">
+                                         <div class="form-group">
+                                            <label for="input01" class="col-sm-2 control-label">Class Established Date</label>
+                                            <div class="col-sm-8">
+                                                   <div class='input-group date' id='datetimepicker1'>
+                                                <input type='text' class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="fa fa-calendar"></span>
+                                                </span>
+                                            </div>
+                                            </div>
+                  
+                                        </div>
+                                        </div>
                                         </div>
                     </div>
                     <div class="modal-footer">
@@ -471,23 +481,19 @@
                                 
                                 
                                 <div class="tile-header dvd dvd-btm">
-                                    <h1 class="custom-font"><strong> View Section Details </strong></h1>
+                                    <h1 class="custom-font"><strong> Chapter Settings</strong></h1>
 									
                                 </div>
-                                <!-- /tile header -->
-                                                      
-
-
-
+                               
                                 <!--form-->
                 <form name="form2" role="form" id="form2" data-parsley-validate>
 
                <div class="row" style="padding:10px;">
-              
+               
          <div class="form-group">
             <!--multiple dropdown functionality-->
-
-<!--   
+<!--
+   
    <div class="ccms_form_element cfdiv_custom" id="style_container_div">
 <label for="input01" class="col-sm-1 control-label">Search By</label>
 <div class="col-sm-3">
@@ -495,9 +501,7 @@
     <select size="1" id="beerStyle" class=" validate['required'] form-control mb-6" title="" type="select" name="style">
 <option value="">-Select-</option>
 <option value="Ale">Class</option>
-<!--<option value="Lager">Section</option>-->
-<!--<option value="Hybrid">name</option>-->
-<!--
+<option value="Lager">Section</option>
 </select><div class="clear"></div><div id="error-message-style"></div></div>
 <div id="Ale"  class="style-sub-1"  style="display: none;" name="stylesub1" onchange="ChangeDropdowns(this.value)">
   <label for="input01" class="col-sm-1 control-label">Select</label>
@@ -507,6 +511,30 @@
       <option value="First">1st Class</option>
       <option value="Second">2nd Class</option>
        <option value="Third">3rd Class</option>
+    </select>
+    </div>
+</div>
+<div id="Lager"  class="style-sub-1"  style="display: none;" name="stylesub1" onchange="ChangeDropdowns(this.value)">
+  
+    <label for="input01" class="col-sm-1 control-label">Section</label>
+    <div class="col-sm-3">
+  <select class="form-control mb-6">
+      <option value="">-Select-</option> 
+      <option value="First">Section-A</option>
+      <option value="Second">Section-B</option>
+       <option value="Third">Section-C</option>
+    </select>
+  </div>
+</div>
+
+<div id="Second"  class="style-sub-1"  style="display: none;" name="stylesub1" onchange="ChangeDropdowns(this.value)">
+  <label for="input01" class="col-sm-1 control-label">Section</label>
+  <div class="col-sm-3"> 
+    <select class="form-control mb-6">
+    <option value="">-Select-</option>
+      <option value="Fruit / Vegetable Beer">All Sections</option>
+      <option value="Herbed / Spiced Beer">Section-A</option>
+      <option value="Smoked Beer">Section-B</option>
     </select>
     </div>
 </div>
@@ -521,46 +549,83 @@
                                         </div>
                                       
                                     </form>
+
+
+                                    @if ($message = Session::get('success'))
+                                          <div class="alert alert-success">
+                                              <p>{{ $message }}</p>
+                                          </div>
+                                      @endif
+
+                                      @if ($message = Session::get('update'))
+                                          <div class="alert alert-success">
+                                              <p>{{ $message }}</p>
+                                          </div>
+                                      @endif
                                 <!--form end-->
                                 <!--field ends-->
                                 
                                  <div style="clear:both;"></div>
                                 <div class="tile-body">
                                     <div class="table-responsive">
-                                        <table class="table table-custom" id="editable-usage">
+                                       <table class="table table-custom" id="editable-usage">
                                             <thead>
                                             <tr>
-                                              <th>Class Name</th>
+                                                <th>Chapter Name</th>
+                                                <th>Chapter Number</th>
+                                                <th>Subject Name</th>
+                                                <th>Class Name</th>
                                                 <th>Section Name</th>
-                                                <th>Section Teacher</th>
-                                                <th>Section Status</th>
-                                                <th>Section Created Date</th>
-                                               
+                                                <th>Chapter Start Date</th>
+                                                <th>Chapter End Date</th>
                                                 
+                                              
+                                                <th>Edit</th>
                                                 
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            
-                                            @foreach ($data as $row)
-                                            <tr class="odd gradeX">
-                                               @foreach($cname as $classname)
-                                        @if($row->class_id===$classname->id)
 
-      <td>{{ $classname->class_name }}</td>
-      @endif
-      @endforeach
-                                                <td><?php echo $row->section_name; ?></td>
-                                                <td><?php echo $row->section_teacher; ?></td>
-                                               <td><?php echo $row->status; ?></td>
-                                                <td><?php echo $row->created_at; ?></td>
+
+                                            @foreach ($chname as $row)
+                                            <tr class="odd gradeX">
+                                                <td><?php echo $row->chapter_name; ?></td>
+                                                <td><?php echo $row->chapter_number; ?></td>
+                                           
+                                                @foreach($sname as $subjectname)
+                                             @if($row->subject_id===$subjectname->id)
+
+                                               <td>{{ $subjectname->subject_name }}</td>
+                                             @endif
+                                            @endforeach
+
+
+                                                @foreach($cname as $classname)
+                                             @if($row->class_id===$classname->id)
+
+                                               <td>{{ $classname->class_name }}</td>
+                                             @endif
+                                            @endforeach
+
+                                            @foreach($secname as $sectionname)
+                                             @if($row->section_id===$sectionname->id)
+
+                                               <td>{{ $sectionname->section_name }}</td>
+                                             @endif
+                                            @endforeach
+
+                                            <td><?php echo $row->chapter_start_date; ?></td>
+                                                <td><?php echo $row->chapter_end_date; ?></td>
+                                                
+                                                <td><a href="{{ URL::to('chapterupdateform') }}/{{$row->id}}">EDIT/<a id="delete" data-confirm="Are you sure to delete this item?" href="{{ URL::to('chapterdelete')}}/{{$row->id}}" onclick = "myFunction()">DELETE</a></a></td>
+                                              <!-- <td class="actions"><a role="button" data-toggle="modal" data-target="#myModal2">EDIT</a></td>
+                                                <!--<td class="actions"><a href="add-employee.html">EDIT</a></td>-->
                                                
                                                 <!--<td class="actions"><a href="add-employee.html">EDIT</a></td>-->
-                                                
                                             </tr>
                                             @endforeach
-                                     
-                                          
+                                           
+                                         
                                             </tbody>
                                         </table>
                                     </div>
@@ -568,9 +633,24 @@
                                 <!-- /tile body -->
                             </section>
                             <!-- /tile -->
+<script>
+var deleteLinks = document.querySelectorAll('#delete');
 
+for (var i = 0; i < deleteLinks.length; i++) {
+  deleteLinks[i].addEventListener('click', function(event) {
+      event.preventDefault();
+
+      var choice = confirm(this.getAttribute('data-confirm'));
+
+      if (choice) {
+        window.location.href = this.getAttribute('href');
+      }
+  });
+}
+</script>
+                 
+                           
                          
-                        </div>
                         <!-- /col -->
                     </div>
                     <!-- /row -->
@@ -637,6 +717,13 @@
         <script src="ncm/js/main.js"></script>
         <!--/ custom javascripts -->
 
+
+
+
+
+
+
+       
 	    <script>
 		 
 		    $("#beerStyle").change ( function () {
@@ -654,7 +741,20 @@
     $('#' + targID).show ();
 } )
     </script>
-    
+    <script> 
+    $("#Ale3").change ( function () {
+    var targID  = $(this).val ();
+    $("div.style-sub-3").hide ();
+    $('#' + targID).show ();
+} )
+    </script>
+    <script> 
+    $("#Ale4").change ( function () {
+    var targID  = $(this).val ();
+    $("div.style-sub-4").hide ();
+    $('#' + targID).show ();
+} )
+    </script>
 	 
 
 
@@ -662,7 +762,6 @@
        
     </body>
 </html>
-
 
 
 
